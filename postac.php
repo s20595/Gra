@@ -53,7 +53,7 @@
 	
 	// ------------- GET / SET -------------------
 	
-	//gettery i settery do właściwości postaci
+	//gettery i settery (pobierają i ustawiają właściwości postaci)
 	
 		public function getAgility(){
 			return $this->zrecznosc;
