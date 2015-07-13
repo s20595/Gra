@@ -22,5 +22,7 @@ O grze.
    - wypicie eliksiru
    - obrona
    - koniec tury
- 6.  
+6. Potwór może tylko atakować. 
+7. Stworzenie eliksiru polega na utworzeniu losowego eliksiru danego poziomu (1-3). Dostępne są eliksiry siły, szybkości i życia. Poziom eliksiru mówi o tym jak wiele punktów danej cechy daje wypity eliksir. Eliksir życia nie może podnieść punktów życia powyżej poziomu początkowego.
+Miłej gry.
 
