@@ -1,5 +1,5 @@
 <?php
-//Importowanie plików
+//importowanie plików
 	require_once ('wiedzmin.php');
 	require_once ('potwor.php');
 	require_once ('eliksir.php');

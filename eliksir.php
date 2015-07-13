@@ -57,7 +57,7 @@ abstract class Eliksir {
 		}
 		public function useElixir($postac) {
 			
-			//Sprawdzanie, czy po wypiciu eliksiru nie zostanie przekroczona wartość maksymalna
+			//sprawdzanie, czy po wypiciu eliksiru nie zostanie przekroczona wartość maksymalna
 			if (($postac->getHP()+$this->efekt) <= $postac->getMaxHP()){
 				echo 'Wypiles Eliksir zycia!', PHP_EOL,
 				 'Twoje zycie wzroslo z : ', $postac->getHP(),

@@ -15,6 +15,7 @@ require_once ('postac.php');
 
 	
 	//----------------- FUNKCJE -------------------
+	
 		//funkcja tworząca eliksir
 		public function stworzEliksir (){
 		
@@ -27,7 +28,7 @@ require_once ('postac.php');
 				$poziom = rand(1,3);
 			}while($poziom>=$this->getPunktyAkcji());		
 				switch (rand(1,3)){
-					case 1: $this->ekwipunek[$this->iloscEliksirow][0] = new EliksirZycia($poziom);  //tworzenie nowego eliksiru danego rodzaju i wylosowanego poziomu
+					case 1: $this->ekwipunek[$this->iloscEliksirow][0] = new EliksirZycia($poziom);  //tworzenie nowego obiektu klasy eliksiru danego rodzaju i wylosowanego poziomu
 							$this->ekwipunek[$this->iloscEliksirow][1] = "Eliksir Zycia ($poziom)";
 							$this->iloscEliksirow+=1;
 							break;
@@ -80,8 +81,8 @@ require_once ('postac.php');
 		public function Obrona(){
 			
 			if ($this->getPunktyAkcji()>=2){              //warunek sprawdzający, czy jest wystarczająca ilość punktów akcji
-				$this->obrona = true;
-				$this->setPunktyAkcji(0);
+				$this->obrona = true;                     //włączenie obrony
+				$this->setPunktyAkcji(0);                 //wyzerowanie punktów akcji (obrona wykorzystuje wszystkie możliwe punkty akcji)
 				echo 'Przyjmujesz pozycje obronna w oczekiwaniu na atak potwora.', PHP_EOL;
 			}
 			else

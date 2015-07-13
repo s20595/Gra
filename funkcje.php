@@ -1,5 +1,6 @@
 <?php
-//wrowadzanie danych dla danej postaci. Jesli funkcja jest wywyołana jako "true" tworzymy wiedzmina, a jak "false" to potwora
+//wrowadzanie danych dla danej postaci.
+//jesli funkcja jest wywyołana jako "true" tworzymy wiedzmina, a jak "false" to potwora
 	function CreateCharacter ($wiedzmin){
 		
 		do{
@@ -11,8 +12,8 @@
 			echo 'Tworzenie Potwora', PHP_EOL;
 		
 		echo 'Wszystkie statystyki nie moga przekraczyc 300 pkt!', PHP_EOL, 'Podaj Szybkosc', PHP_EOL;
-		$szybkosc = trim(fgets(STDIN));     //Wcztywanie wartości z konsoli
-		$points -= $szybkosc;               //Odejmowanie podanej wartości od maksymalnej ilości możliwych punktów
+		$szybkosc = trim(fgets(STDIN));     //wcztywanie wartości z konsoli
+		$points -= $szybkosc;               //odejmowanie podanej wartości od maksymalnej ilości możliwych punktów
 		echo "Podaj Sile (Mozesz jeszcze wykorzystac: $points punktow)", PHP_EOL;
 		$sila = trim(fgets(STDIN));
 		$points -= $sila;
@@ -30,7 +31,7 @@
 			echo 'Zle rozdales statystki! Wartosci nie moga byc ujemne lub rowne zero!', PHP_EOL, PHP_EOL;
 		else
 			break;
-		}while(true);   //pętla z zawsze prawdziwym warunkiem - wychodzi się z niej gdy nie zostanie wykorzystane więcej punktów niż to możliwe
+		}while(true);         //pętla z zawsze prawdziwym warunkiem - wychodzi się z niej gdy nie zostanie wykorzystane więcej punktów niż to możliwe
 	
 	//zwracanie nowego obiektu klasy Wiedźmin z podanymi wartościami	
 		if ($wiedzmin){
@@ -106,7 +107,7 @@
 							break;
 				}
 			}
-		}while($wiedzmin->getPunktyAkcji() >= 1);              //pętla wykonująca się dopóki są jakieś punkty akcji
+		}while($wiedzmin->getPunktyAkcji() >= 1);              //pętla wykonująca się dopóki Wiedźmin ma punkty akcji (wiedźmin / gracz)
 	}
 	//funkcja odpowiedzialna za atak potwora
 	function AtakPotwora ($wiedzmin, $potwor){

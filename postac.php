@@ -10,7 +10,7 @@
 		protected $punktyAkcji = 0;
 		protected $obrona = false;	
 		
-	// Konstruktor postaci
+	// konstruktor postaci
 		public function __construct($szybkosc, $sila, $zrecznosc, $zycie)		
 		{
 			$this->szybkosc = $szybkosc; 			
@@ -19,17 +19,16 @@
 			$this->zycie = $zycie;			
 			$this->maxHP = $zycie;
 		}		
+	//------------------- FUNKCJE ------------------
 	
-
-//------------------- FUNKCJE ------------------
 //funkcja odowiedzialna za atak, 
 		public function Atak ($obronca){
 			
 			$agility = $obronca->getAgility();
 			
 			if ($obronca->getDefense()){             //warunek sprawdzający, czy gracz użył obrony
-				$agility *= 1.5;
-				$obronca->setDefense(false);
+				$agility *= 1.5;                     //zwiększenie zręczności o 50% 
+				$obronca->setDefense(false);         //wyłączenie obrony (w następnej turze zręczność będzie wynosiła 100% maksymalnej wartości)
 			}
 	//określenie współczynnika skuteczności ataku		
 			$sk = (($this->getAgility() - $agility) / $agility ) * 100;
@@ -53,6 +52,7 @@
 	
 	
 	// ------------- GET / SET -------------------
+	
 	//gettery i settery do właściwości postaci
 	
 		public function getAgility(){
