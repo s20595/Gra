@@ -1,5 +1,5 @@
 <?php
-//abstrakcyjna klasa eliksir z funkcją wirtualną "uzyj eliksir", z której to klasy dziedziczą pozostałe klasy eliksirów i przesłaniają własną fukcją "uzyj eliksir"
+//abstrakcyjna klasa eliksir
 abstract class Eliksir {
 		
 		protected $efekt = 0;
