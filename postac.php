@@ -1,5 +1,5 @@
 <?php	
-//abstrakcyjna klasa ostaci, z której dziedziczy widzmin i potwór
+//abstrakcyjna klasa postaci, z której dziedziczy widzmin i potwór
 	abstract class Postac {
 	
 		protected $szybkosc = 0;	
