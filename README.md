@@ -1,5 +1,6 @@
 # Gra
 
+
 Gra składa się z sześciu plików:
 1. postac.php - podstawowa kalsa postaci.
 2. wiedzmin.php - klasa rozszerzająca klasę podstawową postac.
