@@ -1,5 +1,5 @@
 <?php
-
+//wrowadzanie danych dla danej postaci. Jesli funkcja jest wywyołana jako "true" tworzymy wiedzmina, a jak "false" to potwora
 	function CreateCharacter ($wiedzmin){
 		
 		do{
@@ -23,6 +23,7 @@
 		$zycie = trim(fgets(STDIN));
 		$points -= $zycie;
 	
+	//sprawdzanie czy ilośc rozdanych punktów akcji jest prawidłowa
 		if ($points<0)
 			echo 'Uzyles wiecej punktow, niz jest to mozliwe. Zacznij tworzenie postaci od nowa.', PHP_EOL, PHP_EOL;
 		else if ($szybkosc <= 0 || $sila <= 0 || $zrecznosc <= 0 || $zycie <= 0)
@@ -30,7 +31,8 @@
 		else
 			break;
 		}while(true);
-			
+	
+	//potwierdzenie utworzenia postaci		
 		if ($wiedzmin){
 			echo 'Tworzenie Wiedzmina zakonczone sukcesem', PHP_EOL, PHP_EOL;
 			return new Wiedzmin ($szybkosc, $sila, $zrecznosc, $zycie);
@@ -40,7 +42,7 @@
 			return new Potwor ($szybkosc, $sila, $zrecznosc, $zycie);
 		}			
 	}
-	
+	//funkcja sprawdza szybkośc postaci, która decyduje o rozpoczęciu gry przez daną postać oraz przydzielenie punktów akcji
 	function WhoIsFaster($wiedzmin, $potwor){
 		
 		if ($wiedzmin->getSpeed() >= $potwor->getSpeed()){
@@ -67,7 +69,7 @@
 	
 	}
 	
-	
+	//menu gry
 	function Menu ($wiedzmin, $potwor){
 		
 		do{
@@ -106,7 +108,7 @@
 			}
 		}while($wiedzmin->getPunktyAkcji() >= 1);
 	}
-	
+	//funkcja odpowiedzialna za atak potwora
 	function AtakPotwora ($wiedzmin, $potwor){
 		echo PHP_EOL, 'Potwor dzieki swoim punktom akcji atakuje '.$potwor->getPunktyAkcji().' razy!', PHP_EOL, PHP_EOL;
 		

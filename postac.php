@@ -1,4 +1,5 @@
 <?php	
+//abstrakcyjna klasa ostaci, z której dziedziczy widzmin i potwór
 	abstract class Postac {
 	
 		protected $szybkosc = 0;	
@@ -9,8 +10,8 @@
 		protected $punktyAkcji = 0;
 		protected $obrona = false;	
 		
-		
-		public function __construct($szybkosc, $sila, $zrecznosc, $zycie)		// Konstruktor
+	// Konstruktor postaci
+		public function __construct($szybkosc, $sila, $zrecznosc, $zycie)		
 		{
 			$this->szybkosc = $szybkosc; 			
 			$this->sila = $sila;
@@ -21,6 +22,7 @@
 	
 
 //------------------- FUNKCJE ------------------
+//funkcja odowiedzialna za atak, 
 		public function Atak ($obronca){
 			
 			$agility = $obronca->getAgility();
@@ -29,7 +31,7 @@
 				$agility *= 1.5;
 				$obronca->setDefense(false);
 			}
-			
+	//określenie współczynnika skuteczności ataku		
 			$sk = (($this->getAgility() - $agility) / $agility ) * 100;
 				
 				if ($sk>90)
@@ -37,7 +39,7 @@
 				else if($sk<10)
 					$sk=10;
 				
-				
+	//warunek odpowiedzialny za skuteczność ataku			
 				if ($sk>=rand(1,100)){
 					$obronca->setHP($obronca->getHP()-$this->getStrength());
 					echo 'Atak sie powiodl, zabral '.$this->getStrength().' HP, pozostalo zycia '.$obronca->getHP().' z '.$obronca->getMaxHP().'.', PHP_EOL;
@@ -50,6 +52,7 @@
 	
 	
 	// ------------- GET / SET -------------------
+	//gettery i settery do właściwości postaci
 	
 		public function getAgility(){
 			return $this->zrecznosc;

@@ -1,8 +1,9 @@
 <?php
+//klasa wiedzmin która dziedziczy po klasie postac
 require_once ('postac.php');
 	
 	class Wiedzmin extends Postac{
-
+//klasa wiedzmin posiada dwa dodatkowe pola "ekwiunek" oraz "ilośc eliksirów"
 		protected $ekwipunek = [];
 		protected $iloscEliksirow = 0;
 	
@@ -14,15 +15,17 @@ require_once ('postac.php');
 
 	
 	//----------------- FUNKCJE -------------------
+		//funkcja tworząca eliksir
 		public function stworzEliksir (){
 		
 		if ($this->getPunktyAkcji() > 1)
 		{
+		// losuje tak długo, póki nie wylosuje liczby mniejszej od liczby posiadanych punktów akcji
+		// gdyby nie znak "=" mógłby przekroczyć liczbę posiadanych punktów akcji (1 punkt schodzi na samo tworzenie eliksiru)
+		
 			do{
 				$poziom = rand(1,3);
-			}while($poziom>=$this->getPunktyAkcji());		// losuje tak długo, póki nie wylosuje liczby mniejsze od liczby posiadanych punktów akcji
-														// gdyby nie znak "=" mógłby przekroczyć liczbę posiadanych punktów akcji (1 punkt schodzi na samo tworzenie eliksiru)
-		
+			}while($poziom>=$this->getPunktyAkcji());		
 				switch (rand(1,3)){
 					case 1: $this->ekwipunek[$this->iloscEliksirow][0] = new EliksirZycia($poziom);
 							$this->ekwipunek[$this->iloscEliksirow][1] = "Eliksir Zycia ($poziom)";
@@ -46,11 +49,12 @@ require_once ('postac.php');
 		else
 			echo 'Masz za malo punktow akcji, zeby stworzyc eliksir!', PHP_EOL;
 		}
-		
+		//fukncja odowiedzialna za wypicie eliksiru
 		public function wypijEliksir (){
 			
 			if ($this->iloscEliksirow > 0){
-				
+			
+			//funkcja sprawdza ilośc punktów akcji oraz poprawnośc wyboru
 				echo 'Jaki eliksir chcesz wypic?', PHP_EOL;
 				for ($i = 0; $i<$this->iloscEliksirow; $i++)
 					if (isset($this->ekwipunek[$i]))
@@ -72,7 +76,7 @@ require_once ('postac.php');
 			else
 				echo 'Nie posiadasz zadnego eliksiru do wypicia!', PHP_EOL;
 		}
-		
+		//funkcja obrony wiedzmina
 		public function Obrona(){
 			
 			if ($this->getPunktyAkcji()>=2){

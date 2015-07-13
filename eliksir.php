@@ -1,5 +1,5 @@
 <?php
-
+//abstrakcyjna klasa eliksir z funkcją wirtualną "uzyj eliksir", z której to klasy dziedziczą pozostałe klasy eliksirów i przesłaniają własną fukcją "uzyj eliksir"
 abstract class Eliksir {
 		
 		protected $efekt = 0;
@@ -7,9 +7,10 @@ abstract class Eliksir {
 		abstract public function useElixir($postac);
 	}
 	
-	
+	//klasa elisir szybkośći
 	class EliksirSzybkosci extends Eliksir {
 		
+		//konstruktor eliksiru
 		public function __construct($poziomEliksiru)
 		{
 			$this->efekt=5*$poziomEliksiru;
@@ -20,13 +21,13 @@ abstract class Eliksir {
 			 'Twoja szybkosc wzrosla z : ', $postac->getSpeed(),
 			$postac->setSpeed($postac->getSpeed()+$this->efekt),
 		     ' do : ', $postac->getSpeed(), PHP_EOL;
-			 
+		//toksyczna właściwośc eliksiru	 
 			 $trucizna = (int)($postac->getHP()/rand(40,50)*$this->efekt);
 			 $postac->setHP($postac->getHP() - $trucizna);
 			 echo 'Pijac trujacy eliksir straciles '.$trucizna.' punktow zycia.', PHP_EOL, 'Twoj aktualny poziom zdrowia: '.$postac->getHP(),PHP_EOL;
 		}
 	}
-		
+	//klasa eliksir sily	
 	class EliksirSily extends Eliksir {
 		
 		public function __construct($poziomEliksiru)
@@ -45,7 +46,7 @@ abstract class Eliksir {
 			echo 'Pijac trujacy eliksir straciles '.$trucizna.' punktow zycia.', PHP_EOL, 'Twoj aktualny poziom zdrowia: '.$postac->getHP(),PHP_EOL;			
 		}
 	}
-	
+	//klasa eliksir zycia
 	class EliksirZycia extends Eliksir {
 		
 		public function __construct($poziomEliksiru)
