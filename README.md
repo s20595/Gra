@@ -21,3 +21,4 @@ Akcje dostępne dla wiedźmina to:
    - obrona
    - koniec tury
 
+Miłej gry.
