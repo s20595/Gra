@@ -13,6 +13,7 @@ abstract class Eliksir {
 		//konstruktor eliksiru
 		public function __construct($poziomEliksiru)
 		{
+			//obliczanie efektu eliksiru
 			$this->efekt=5*$poziomEliksiru;
 			echo "Stworzyles Eliksir Szybkosci poziomu $poziomEliksiru";
 		}
@@ -21,7 +22,7 @@ abstract class Eliksir {
 			 'Twoja szybkosc wzrosla z : ', $postac->getSpeed(),
 			$postac->setSpeed($postac->getSpeed()+$this->efekt),
 		     ' do : ', $postac->getSpeed(), PHP_EOL;
-		//toksyczna właściwośc eliksiru	 
+		//toksyczna właściwośc eliksiru, obliczanie negatywnego efektu
 			 $trucizna = (int)($postac->getHP()/rand(40,50)*$this->efekt);
 			 $postac->setHP($postac->getHP() - $trucizna);
 			 echo 'Pijac trujacy eliksir straciles '.$trucizna.' punktow zycia.', PHP_EOL, 'Twoj aktualny poziom zdrowia: '.$postac->getHP(),PHP_EOL;
@@ -56,6 +57,7 @@ abstract class Eliksir {
 		}
 		public function useElixir($postac) {
 			
+			//Sprawdzanie, czy po wypiciu eliksiru nie zostanie przekroczona wartość maksymalna
 			if (($postac->getHP()+$this->efekt) <= $postac->getMaxHP()){
 				echo 'Wypiles Eliksir zycia!', PHP_EOL,
 				 'Twoje zycie wzroslo z : ', $postac->getHP(),

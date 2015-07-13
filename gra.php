@@ -12,4 +12,4 @@
 	//pętla gry	
 		do{
 			WhoIsFaster($geralt, $potwor);
-		}while ($geralt->getHP() > 0 && $potwor->getHP() > 0);
+		}while ($geralt->getHP() > 0 && $potwor->getHP() > 0);   //warunek kończący grę

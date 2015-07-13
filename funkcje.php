@@ -11,8 +11,8 @@
 			echo 'Tworzenie Potwora', PHP_EOL;
 		
 		echo 'Wszystkie statystyki nie moga przekraczyc 300 pkt!', PHP_EOL, 'Podaj Szybkosc', PHP_EOL;
-		$szybkosc = trim(fgets(STDIN));
-		$points -= $szybkosc;
+		$szybkosc = trim(fgets(STDIN));     //Wcztywanie wartości z konsoli
+		$points -= $szybkosc;               //Odejmowanie podanej wartości od maksymalnej ilości możliwych punktów
 		echo "Podaj Sile (Mozesz jeszcze wykorzystac: $points punktow)", PHP_EOL;
 		$sila = trim(fgets(STDIN));
 		$points -= $sila;
@@ -23,35 +23,35 @@
 		$zycie = trim(fgets(STDIN));
 		$points -= $zycie;
 	
-	//sprawdzanie czy ilośc rozdanych punktów akcji jest prawidłowa
+	//warunek zabezpiecza przed wykorzystaniem większej ilości punktów
 		if ($points<0)
 			echo 'Uzyles wiecej punktow, niz jest to mozliwe. Zacznij tworzenie postaci od nowa.', PHP_EOL, PHP_EOL;
-		else if ($szybkosc <= 0 || $sila <= 0 || $zrecznosc <= 0 || $zycie <= 0)
+		else if ($szybkosc <= 0 || $sila <= 0 || $zrecznosc <= 0 || $zycie <= 0)     //nie można zostawić któregoś parametru z 0 wartością
 			echo 'Zle rozdales statystki! Wartosci nie moga byc ujemne lub rowne zero!', PHP_EOL, PHP_EOL;
 		else
 			break;
-		}while(true);
+		}while(true);   //pętla z zawsze prawdziwym warunkiem - wychodzi się z niej gdy nie zostanie wykorzystane więcej punktów niż to możliwe
 	
-	//potwierdzenie utworzenia postaci		
+	//zwracanie nowego obiektu klasy Wiedźmin z podanymi wartościami	
 		if ($wiedzmin){
 			echo 'Tworzenie Wiedzmina zakonczone sukcesem', PHP_EOL, PHP_EOL;
 			return new Wiedzmin ($szybkosc, $sila, $zrecznosc, $zycie);
 		}
+	//zwracanie nowego obiektu klasy Potówr z podanymi wartościami
 		else{
 			echo 'Tworzenie Potwora zakonczone sukcesem', PHP_EOL, PHP_EOL;
 			return new Potwor ($szybkosc, $sila, $zrecznosc, $zycie);
 		}			
 	}
-	//funkcja sprawdza szybkośc postaci, która decyduje o rozpoczęciu gry przez daną postać oraz przydzielenie punktów akcji
-	function WhoIsFaster($wiedzmin, $potwor){
+		function WhoIsFaster($wiedzmin, $potwor){
 		
-		if ($wiedzmin->getSpeed() >= $potwor->getSpeed()){
-			$wiedzmin->setPunktyAkcji((int)($wiedzmin->getSpeed()/$potwor->getSpeed()));
-			$potwor->setPunktyAkcji(1);
+		if ($wiedzmin->getSpeed() >= $potwor->getSpeed()){                              //jeśli wiedźmin jest szybszy od potwora
+			$wiedzmin->setPunktyAkcji((int)($wiedzmin->getSpeed()/$potwor->getSpeed()));//przypisuje ilość punktów akcji (parsowanie na int (liczby całkowite))
+			$potwor->setPunktyAkcji(1);                                                 //potwór dostaje jeden punkt akcji
 			
-			Menu ($wiedzmin, $potwor);
-			if ($potwor->getHP() > 0)
-				AtakPotwora ($wiedzmin, $potwor);
+			Menu ($wiedzmin, $potwor);                                                  //wywołanie funkcji menu
+			if ($potwor->getHP() > 0)                                                   //sprawdza,czy potwór nie zginął
+				AtakPotwora ($wiedzmin, $potwor);                                       //wywołanie funkcji AtakPotwora
 			
 		}
 		else if ($potwor->getSpeed() > $wiedzmin->getSpeed()){
@@ -73,7 +73,7 @@
 	function Menu ($wiedzmin, $potwor){
 		
 		do{
-			if ($potwor->getHP() <= 0){
+			if ($potwor->getHP() <= 0){      //warunek zabezpieczający wykonanie akcji po śmierci potwora
 				echo PHP_EOL, PHP_EOL, 'Brawo! Zmiazdzyles potwora!', PHP_EOL;
 				break;
 			}
@@ -106,7 +106,7 @@
 							break;
 				}
 			}
-		}while($wiedzmin->getPunktyAkcji() >= 1);
+		}while($wiedzmin->getPunktyAkcji() >= 1);              //pętla wykonująca się dopóki są jakieś punkty akcji
 	}
 	//funkcja odpowiedzialna za atak potwora
 	function AtakPotwora ($wiedzmin, $potwor){

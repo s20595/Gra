@@ -27,19 +27,20 @@
 			
 			$agility = $obronca->getAgility();
 			
-			if ($obronca->getDefense()){
+			if ($obronca->getDefense()){             //warunek sprawdzający, czy gracz użył obrony
 				$agility *= 1.5;
 				$obronca->setDefense(false);
 			}
 	//określenie współczynnika skuteczności ataku		
 			$sk = (($this->getAgility() - $agility) / $agility ) * 100;
 				
-				if ($sk>90)
+				if ($sk>90)                         //ograniczenie skrajności (nie będzie mniej niż 10% a więcej niż 90%)
 					$sk=90;
 				else if($sk<10)
 					$sk=10;
 				
-	//warunek odpowiedzialny za skuteczność ataku			
+	//warunek odpowiedzialny za skuteczność ataku. 
+    //jeśli skuteczność ataku jest większa lub równa wylosowanej liczbie to atak się powiedzie 	
 				if ($sk>=rand(1,100)){
 					$obronca->setHP($obronca->getHP()-$this->getStrength());
 					echo 'Atak sie powiodl, zabral '.$this->getStrength().' HP, pozostalo zycia '.$obronca->getHP().' z '.$obronca->getMaxHP().'.', PHP_EOL;
@@ -47,7 +48,7 @@
 				else
 					echo "Atak chybil o wlos!", PHP_EOL;
 				
-			$this->setPunktyAkcji($this->getPunktyAkcji()-1);	
+			$this->setPunktyAkcji($this->getPunktyAkcji()-1);	 //zmniejsze punktów akcji o 1 (koszt ataku)
 		}
 	
 	
