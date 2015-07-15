@@ -63,7 +63,7 @@ require_once ('postac.php');
 
 				$wybor = trim(fgets(STDIN));
 				
-				if ($wybor >= 0 && $wybor<=$i){
+				if ($wybor >= 0 && $wybor<=$i && is_numeric($wybor)){			//funkcja is_numeric zwraca true jeśli wczytana zmienna jest liczbą
 					$this->ekwipunek[$wybor][0]-> useElixir($this);
 					$this->iloscEliksirow-=1;              //dekrementacja ilości eliksirów
 					unset($this->ekwipunek[$wybor]);       //usuwanie objektu z ekwipunku
