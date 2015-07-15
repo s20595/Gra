@@ -13,20 +13,18 @@ require_once ('postac.php');
 			$this->obrona = $value;
 		}
 
-	
-	//----------------- FUNKCJE -------------------
+		//----------------- FUNKCJE -------------------
 	
 		//funkcja tworząca eliksir
 		public function stworzEliksir (){
 		
 		if ($this->getPunktyAkcji() > 1)
 		{
-		// losuje tak długo, póki nie wylosuje liczby mniejszej od liczby posiadanych punktów akcji
-		// gdyby nie znak "=" mógłby przekroczyć liczbę posiadanych punktów akcji (1 punkt schodzi na samo tworzenie eliksiru)
-		
 			do{
-				$poziom = rand(1,3);
-			}while($poziom>=$this->getPunktyAkcji());		
+				echo PHP_EOL, 'Podaj poziom eliksiru, jaki chcesz stworzyc (1-3)', PHP_EOL;
+				$poziom = (int) trim(fgets(STDIN));
+			}while($poziom < 1 || $poziom > 3 || $poziom >= $this->getPunktyAkcji());				//pętla wykonuje się tak długo, póki użytkownik nie wybierze
+																									//liczby mniejszej od liczby punktów akcji i znajdującej się w przedziale 1-3		
 				switch (rand(1,3)){
 					case 1: $this->ekwipunek[$this->iloscEliksirow][0] = new EliksirZycia($poziom);  //tworzenie nowego obiektu klasy eliksiru danego rodzaju i wylosowanego poziomu
 							$this->ekwipunek[$this->iloscEliksirow][1] = "Eliksir Zycia ($poziom)";
